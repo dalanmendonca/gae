@@ -31,10 +31,12 @@ def outputpage():
 	for x in longurl:
 		if x not in legalchars: #The size of legal chars can be reduced because we're doing a conversion to lowercase
 			return render_template('output.htm',errorcode=1)
-	'''
-	We can do lot more stuff here, this is only a character validity test. 
-	Leaving for later.
-	'''
+	if(longurl[:11]=="http://www."):
+		longurl= longurl[11:]
+	if(longurl[:7]=="http://"):
+		longurl= longurl[7:]
+	if(longurl[:4]=="www."):
+		longurl= longurl[4:]	
 
 	hashObject = hashlib.md5(longurl)
 	urlHash = hashObject.hexdigest()	
