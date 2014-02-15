@@ -27,16 +27,20 @@ def s():
 def outputpage():
 	longurl = request.form["longurl"]
 	longurl = longurl.lower()
-	custom = request.form["customstring"]
+	custom_request = request.form["customstring"]
 	for x in longurl:
 		if x not in legalchars: #The size of legal chars can be reduced because we're doing a conversion to lowercase
 			return render_template('output.htm',errorcode=1)
+	for x in custom_request:
+		if x not in legalchars: #The size of legal chars can be reduced because we're doing a conversion to lowercase
+			return render_template('output.htm',errorcode=1)					
 	if(longurl[:11]=="http://www."):
 		longurl= longurl[11:]
 	if(longurl[:7]=="http://"):
 		longurl= longurl[7:]
 	if(longurl[:4]=="www."):
 		longurl= longurl[4:]	
+	
 
 	hashObject = hashlib.md5(longurl)
 	urlHash = hashObject.hexdigest()	
@@ -44,19 +48,26 @@ def outputpage():
 	q.filter("hashedURL =",urlHash)
 	results = q.fetch(1)
 	#print len(results)
-	if results==[]:
-		shortURLExists  = True
-		while (shortURLExists):
-			newShortURL = ''.join(random.sample(alphanumeric,5))
-		
-			q.filter("shortURL =",newShortURL)
-			results = q.fetch(1)
-			if results==[]:
-				shortURLExists = False
+	if results==[]: 
+		if custom_request=='':	
+			shortURLExists  = True
+			while (shortURLExists):
+				newShortURL = ''.join(random.sample(alphanumeric,5))
+			
+				q.filter("shortURL =",newShortURL)
+				results = q.fetch(1)
+				if results==[]:
+					shortURLExists = False
 
 
-		new_record = ShortenedURLs(hashedURL=urlHash,originalURL=longurl,shortURL=newShortURL)
-		new_record.put()
+			new_record = ShortenedURLs(hashedURL=urlHash,originalURL=longurl,shortURL=newShortURL)
+			new_record.put()
+		else:
+			print "Non empty custom request"
+			newShortURL = custom_request
+			new_record = ShortenedURLs(hashedURL=urlHash,originalURL=longurl,shortURL=newShortURL)
+			new_record.put()
+
 	else:
 		print "URL already shortened"
 		newShortURL = results[0].shortURL
