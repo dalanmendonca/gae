@@ -47,6 +47,11 @@ def outputpage():
 	q = ShortenedURLs.all()
 	q.filter("hashedURL =",urlHash)
 	results = q.fetch(1)
+	q = ShortenedURLs.all()
+	q.filter("shortURL =",custom_request)
+	customCheck = q.fetch(1)
+	if customCheck!=[]:
+		custom_request=''
 	#print len(results)
 	if results==[]: 
 		if custom_request=='':	
