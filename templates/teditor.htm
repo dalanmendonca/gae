@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sexy Timeline generator</title>
+  </head>
+ <body style="margin-left:20px;">  	
+<h3>Datetime format</h3>
+<b>2000</b> - event that happened in that year
+</br><b>01/2000</b> - event that happened in that month/year
+</br><b>01/01/2000</b> - event that happened exactly on that day/month/year
+</br><b>2001-2005, 10/2001-02/03/2005</b> - event that happen between the two dates
+</br><b>~2005</b> - event that happened at around that year
+</br><b>2005-~ </b>- event that happened from that year and beyond (now).
+</p>
+
+</br>
+<h3>Use the format above to fill in your timeline in the box below, sample input already exists</h3>
+For an example see <a href="https://raw.github.com/dalanmendonca/life/master/life.md" target="_blank"> my input </a>  and <a href="http://dalanm.com/life/" target="_blank">my timeline </a>
+</br>
+</br>
+{% if new_user==True %}
+<form action="/tconfigprocessor" method="post">
+<textarea rows="8" cols="70" name="userconfig">
+@Steve Jobs's life
+===============
+- 24/02/1955 Born
+- ~1968 Summer job
+- 03/1976 Built a computer
+- 01/04/1976 Started a [company](http://en.wikipedia.org/wiki/Apple_Inc. "Apple Inc.")
+- 04/1976-2011 Whole bunch of interesting events
+</textarea>
+</br>
+Username: <input type="text" name="username" value= {{ uname }}></input>
+Enter password here before saving: <input type="text" name="password"></input>
+</br>Entering the wrong password brings you back here
+</br>
+</br>
+<button type="button" onclick="alert('Hello world!')">Preview</button>
+<input type="submit" value="I'm done editing">
+{% endif %}
+
+{% if new_user==False %}
+<form action="/tconfigprocessor" method="post">
+<textarea rows="8" cols="70" name="userconfig">
+{{ configdata }}
+</textarea>
+</br>
+Username: <input type="text" name="username" value= {{ uname }}></input>
+Enter password here before saving: <input type="text" name="password"></input>
+</br>
+Entering the wrong password brings you back here
+</br>
+</br>
+<button type="button" onclick="alert('Hello world!')">Preview</button>
+<input type="submit" value="I'm done editing, Save this">
+
+{% endif %}
+
+  </body>
+</html>
