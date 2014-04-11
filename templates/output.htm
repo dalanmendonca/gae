@@ -2,6 +2,36 @@
 <html>
   <head>
     <title>Worlds best URL shortener</title>
+    <link href="http://bootswatch.com/readable/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+    body
+    {
+    
+    }
+     .main
+     {
+      border-style:solid;
+      border-color:#000000 #000000 #000000 #000000;
+      border-width:1px;
+      border-radius:5px;
+      padding:0px 4px 2px 4px;
+      margin-top:5%;
+      margin-right:25%;
+      margin-left:25%;
+      background-color:#F2F2F2;
+      max-width:50%;
+      min-width:30%;
+     }
+     .form-control
+     {
+      max-width:50%;
+      display:inline;
+     }
+     #customhelp
+    {
+    display:inline;
+    }
+     </style>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -13,10 +43,11 @@
 
 </script>
   </head>
-  <body style="margin-left:20px;">
+  <body>
+  <div class="alert alert-success">
     <h3>Congrats!</h3>
       &nbsp;&nbsp;Your shortened URL is {{ finalurl }} 
-      
+  </div>
 
   </form>
 </p>
