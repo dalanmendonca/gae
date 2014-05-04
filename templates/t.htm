@@ -2,18 +2,53 @@
 <html>
   <head>
     <title>Sexy Timeline generator</title>
-  </head>
-  <body style="margin-left:20px;">
-    <h3>Returning User - Type Username below to edit timeline</h3>
-    <form action="/treturning" method="post" name="ReturningUser">
-    Username:
-    <input type="text" name="username"></input>
-    <input type="submit" value="Sign In">
-    </form>
+    <link href="http://bootswatch.com/readable/bootstrap.min.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <style type="text/css">
+    body
+    {
+    background-color:#FFFFFF
+    }
+     .main
+     {
+      border-style:solid;
+      border-color:#000000 #000000 #000000 #000000;
+      border-width:1px;
+      border-radius:5px;
+      padding:2px 4px 3px 4px;
+      margin-top:5%;
+      margin-right:25%;
+      margin-left:25%;
+      background-color:#F2F2F2;
+      max-width:50%;
+      min-width:30%;
+     }
+     .form-control
+     {
+      max-width:50%;
+      display:inline;
+     }
+     #customhelp
+    {
+    display:inline;
+    }
+    h1,h2,h3
+    {
+      display:inline;
+    }
+    .cautious-text
+    {
 
-  </br>
-    <h3>New user - Pick a username & a password</h3>
+    }
+     </style>
+  </head>
+
+  <body style="margin-left:20px;">
+    <div class="main">
+    <h3>New user </h3>
+    Pick a username & a password
     <form action="/tnew" method="post" name="NewUser">
+      </br>
     Username:
     <input type="text" name="username"></input>
     Password:
@@ -22,7 +57,17 @@
     </br></br>
     (This username will also be used to show your timeline, don't pick something embarassing!)
     </form>
-
+  </div>
+  <div class="main">
+     <h3>Returning User </h3> Type Username below to sign in and edit timeline
+    <form action="/treturning" method="post" name="ReturningUser">
+      </br>
+    Username:
+    <input type="text" name="username"></input>
+    <input type="submit" value="Sign In">
+    </form>
+    </br>
+</div>
     </br>
   </body>
 </html>
