@@ -1,16 +1,16 @@
 gae
 ===
 
-Source for stuff hosted at app.dalanm.com
+Source for stuff hosted at www.app.dalanm.com
 
 
 This is a Google App Engine instance with a python environment and is my toybox for playing around with python stuff
 
 Currently live projects here:
 
-* A URL shortener:  app.dalanm.com/s 
+* A URL shortener:  www.app.dalanm.com/s 
 
-* A Timeline generator: app.dalanm.com/t
+* A Timeline generator: www.app.dalanm.com/t
 
 Send issues/ideas to dalan.mendonca@gmail.com
 
